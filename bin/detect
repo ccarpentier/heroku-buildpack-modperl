@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-if [-f "$1/index.pl"]; then
+# bin/detect <build-dir>
+
+BUILD_DIR=$1
+
+if [-f "$BUILD_DIR/index.pl"]; then
 	echo "ModPerl" && exit 0
 else
 	exit 1

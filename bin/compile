@@ -1,4 +1,14 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-# fail fast
-set -e
+# bin/compile <build-dir> <cache-dir> <env-dir>
+
+# fail hard
+set -o pipefail
+# fail harder
+set -eu
+# move hidden files too, just in case
+shopt -s dotglob
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+ENV_DIR=$3
