@@ -5,7 +5,7 @@
 BUILD_DIR=$1
 
 if [ -f "$BUILD_DIR/index.pl" ]; then
-	echo "ModPerl" && exit 0
+	echo "Apache/mod_perl2" && exit 0
 else
 	exit 1
 fi
