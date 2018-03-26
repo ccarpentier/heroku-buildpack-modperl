@@ -34,7 +34,7 @@ cd $BUILD_DIR
 # fi
 # mv $CACHE_DIR/www .
 
-APACHE_DIR="$BUILD_DIR/$BUILDPACK/httpd"
+APACHE_DIR="$BUILDPACK/httpd"
 
 cat >>boot.sh <<EOF
 sed -i 's/Listen 80/Listen '\$PORT'/' $APACHE_DIR/conf/httpd.conf
