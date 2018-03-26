@@ -27,8 +27,7 @@ if [ -f $CACHE_DIR/$APACHE_BUNDLE ]; then
   cp $CACHE_DIR/$APACHE_BUNDLE .
 else
   echo "--------> from internet"
-
-  curl --silent --max-time 60 --location $APACHE_BUNDLE_URL --output $APACHE_BUNDLE
+  curl --silent --max-time 60 --output $APACHE_BUNDLE $APACHE_BUNDLE_URL
   cp $APACHE_BUNDLE $CACHE_DIR/$APACHE_BUNDLE
 fi
 
