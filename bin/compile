@@ -11,3 +11,17 @@ shopt -s dotglob
 
 BUILD_DIR=$1
 CACHE_DIR=$2
+
+# cd $BUILD_DIR
+#
+# # move app things to www
+# mkdir -p $CACHE_DIR/www
+# mv * $CACHE_DIR/www
+# if [ -f $CACHE_DIR/www/lib ]; then
+#     mv $CACHE_DIR/www/lib .
+# fi
+# mv $CACHE_DIR/www .
+
+cat >>boot.sh <<EOF
+echo "Launching Apache"
+EOF
