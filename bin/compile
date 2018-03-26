@@ -12,8 +12,6 @@ shopt -s dotglob
 BUILD_DIR=$1
 CACHE_DIR=$2
 
-.modperl2_buildpac
-
 BUILDPACK=".modperl2-buildpack"
 APACHE_BUNDLE="https://github.com/ccarpentier/heroku-buildpack-modperl/blob/master/httpd_2.4.6-mod_perl_2.0.10.tar.gz?raw=true"
 
