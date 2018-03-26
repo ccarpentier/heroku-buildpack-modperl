@@ -14,7 +14,7 @@ CACHE_DIR=$2
 
 BUILDPACK=".modperl2-buildpack"
 APACHE_BUNDLE="httpd_2.4.6-mod_perl_2.0.10.tar.gz"
-APACHE_BUNDLE_URL="https://github.com/ccarpentier/heroku-buildpack-modperl/blob/master/${APACHE_BUNDLE}?raw=true"
+APACHE_BUNDLE_URL="https://www.webassign.net/zip/${APACHE_BUNDLE}"
 
 cd $BUILD_DIR
 
