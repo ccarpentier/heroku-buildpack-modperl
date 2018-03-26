@@ -13,14 +13,25 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 
 BUILDPACK=".modperl2-buildpack"
-APACHE_BUNDLE="https://github.com/ccarpentier/heroku-buildpack-modperl/blob/master/httpd_2.4.6-mod_perl_2.0.10.tar.gz?raw=true"
+APACHE_BUNDLE="httpd_2.4.6-mod_perl_2.0.10.tar.gz"
+APACHE_BUNDLE_URL="https://github.com/ccarpentier/heroku-buildpack-modperl/blob/master/${APACHE_BUNDLE}?raw=true"
 
 cd $BUILD_DIR
 
 mkdir -p $BUILDPACK && cd $BUILDPACK
 
 echo "-----> Bundling Apache"
-curl --silent --max-time 60 --location $APACHE_BUNDLE | tar xz
+
+if [ -f $CACHE_DIR/$APACHE_BUNDLE ]; then
+  echo "--------> from cache"
+  cp $CACHE_DIR/$APACHE_BUNDLE .
+else
+  echo "--------> from internet"
+  curl --silent --max-time 60 --location $APACHE_BUNDLE_URL -o $APACHE_BUNDLE
+  cp $APACHE_BUNDLE $CACHE_DIR/$APACHE_BUNDLE
+fi
+
+tar xz $APACHE_BUNDLE
 
 cd $BUILD_DIR
 
