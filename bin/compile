@@ -12,7 +12,7 @@ shopt -s dotglob
 BUILD_DIR=$1
 CACHE_DIR=$2
 
-BUILDPACK=".modperl2-buildpack"
+BUILDPACK="modperl2-buildpack"
 APACHE_BUNDLE="httpd_2.4.6-mod_perl_2.0.10.tar.gz"
 APACHE_BUNDLE_URL="https://www.webassign.net/zip/${APACHE_BUNDLE}"
 
@@ -22,16 +22,15 @@ mkdir -p $BUILDPACK && cd $BUILDPACK
 
 echo "-----> Bundling Apache"
 
-if [ -f $CACHE_DIR/$APACHE_BUNDLE ]; then
-  echo "--------> from cache"
-  cp $CACHE_DIR/$APACHE_BUNDLE .
+if [ -d $CACHE_DIR/$BUILDPACK/httpd ]; then
+  echo "--------> from Cache"
+  cp -r $CACHE_DIR/$BUILDPACK/* .
 else
-  echo "--------> from internet"
-  curl --silent --max-time 60 --output $APACHE_BUNDLE $APACHE_BUNDLE_URL
-  cp $APACHE_BUNDLE $CACHE_DIR/$APACHE_BUNDLE
+  echo "--------> from Internet"
+  curl --silent --max-time 60 --location $APACHE_BUNDLE_URL | tar -xz
+  mkdir -p $CACHE_DIR/$BUILDPACK
+  cp -r * $CACHE_DIR/$BUILDPACK
 fi
-
-tar xz $APACHE_BUNDLE
 
 cd $BUILD_DIR
 
