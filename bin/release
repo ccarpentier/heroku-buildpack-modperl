@@ -7,5 +7,5 @@ BUILD_DIR=$1
 cat <<EOF
 ---
 default_process_types:
-  web: python -m SimpleHTTPServer
+  web: python -m SimpleHTTPServer 8080
 EOF
