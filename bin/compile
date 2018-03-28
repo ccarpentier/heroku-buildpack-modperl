@@ -60,3 +60,9 @@ tail -F $APACHE_DIR/logs/access_log &
 echo "Launching Apache"
 exec $APACHE_DIR/bin/httpd -DNO_DETACH
 EOF
+
+cd $BUILD_DIR
+CPPFLAGS=-I$HOME/local/include
+LDFLAGS=-L$HOME/local/lib
+LD_LIBRARY_PATH=$HOME/lib
+carton install
