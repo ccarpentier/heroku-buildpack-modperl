@@ -44,6 +44,8 @@ cd $BUILD_DIR
 # fi
 # mv $CACHE_DIR/www .
 
+cp *.conf $BUILDPACK/httpd/conf.d
+
 APACHE_DIR="$BUILDPACK/httpd"
 
 cat >>boot.sh <<EOF
