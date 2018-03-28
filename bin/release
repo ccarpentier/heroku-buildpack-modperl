@@ -7,5 +7,5 @@ BUILD_DIR=$1
 cat <<EOF
 ---
 default_process_types:
-  web: sh boot.sh
+  web: python -m SimpleHTTPServer
 EOF
