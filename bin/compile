@@ -66,4 +66,4 @@ PATH=$BUILD_DIR/$BUILDPACK/perl/bin:$PATH
 CPPFLAGS=-I$HOME/local/include
 LDFLAGS=-L$HOME/local/lib
 LD_LIBRARY_PATH=$HOME/lib
-carton install
+# carton install
