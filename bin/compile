@@ -65,6 +65,6 @@ cd $BUILD_DIR
 CPPFLAGS=-I$HOME/local/include
 LDFLAGS=-L$HOME/local/lib
 LD_LIBRARY_PATH=$HOME/lib
-CARTON=$HOME/$BUILDPACK/perl/bin/carton
+CARTON=$BUILD_DIR/$BUILDPACK/perl/bin/carton
 echo $CARTON
 $CARTON install
