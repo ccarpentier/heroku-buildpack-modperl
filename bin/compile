@@ -14,7 +14,7 @@ CACHE_DIR=$2
 
 BUILDPACK=".modperl2-buildpack"
 APACHE_BUNDLE="httpd_2.4.6-mod_perl_2.0.10.tar.gz"
-APACHE_BUNDLE_URL="https://www.webassign.net/zip/${APACHE_BUNDLE}"
+APACHE_BUNDLE_URL="https://webassign.christop.io/${APACHE_BUNDLE}"
 
 cd $BUILD_DIR
 
@@ -26,7 +26,7 @@ if [ -d $CACHE_DIR/$BUILDPACK/httpd ]; then
   echo "--------> from Cache"
   cp -r $CACHE_DIR/$BUILDPACK/* .
 else
-  echo "--------> from Internet"
+  echo "--------> from Internet: $APACHE_BUNDLE_URL"
   curl --silent --max-time 60 --location $APACHE_BUNDLE_URL | tar -xz
   mkdir -p $CACHE_DIR/$BUILDPACK
   cp -r * $CACHE_DIR/$BUILDPACK
@@ -62,8 +62,4 @@ exec $APACHE_DIR/bin/httpd -DNO_DETACH
 EOF
 
 cd $BUILD_DIR
-PATH=$BUILD_DIR/$BUILDPACK/perl/bin:$PATH
-CPPFLAGS=-I$HOME/local/include
-LDFLAGS=-L$HOME/local/lib
-LD_LIBRARY_PATH=$HOME/lib
 carton install
