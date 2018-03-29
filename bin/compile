@@ -62,4 +62,5 @@ exec $APACHE_DIR/bin/httpd -DNO_DETACH
 EOF
 
 cd $BUILD_DIR
+PATH=$BUILD_DIR/$BUILDPACK/perl/bin:$PATH
 carton install
