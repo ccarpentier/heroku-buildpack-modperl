@@ -40,7 +40,7 @@ fi
 
 cd $BUILD_DIR
 
-cp *.conf $BUILDPACK/httpd/conf.d
+cp etc/httpd/conf.d/*.conf $BUILDPACK/httpd/conf.d
 
 APACHE_DIR="$BUILDPACK/httpd"
 
