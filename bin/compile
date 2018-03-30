@@ -74,6 +74,6 @@ if [ -f 'cpanfile' ]; then
     cp cpanfile $CARTON_CACHE/$MD5SUM
     carton install
     mkdir -p $CARTON_CACHE/local
-    cp -r ./local/* $CARTON_CACHE/local
+    cp -r local/* $CARTON_CACHE/local
   fi
 fi
