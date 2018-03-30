@@ -70,7 +70,10 @@ if [ -f 'cpanfile' ]; then
     cp -r $CARTON_CACHE/local/* local
   else
     echo "--------> from Internet"
-    mkdir -p $CARTON_CACHE
+    if [ -d $CARTON_CACHE]; then
+      rm -fr $CARTON_CACHE
+    fi
+    mkdir $CARTON_CACHE
     cp cpanfile $CARTON_CACHE/$MD5SUM
     carton install
     mkdir -p $CARTON_CACHE/local
