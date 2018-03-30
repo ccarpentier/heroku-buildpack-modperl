@@ -70,4 +70,9 @@ EOF
 
 cd $BUILD_DIR
 PATH=$BUILD_DIR/$BUILDPACK/perl/bin:$PATH
-carton install
+
+if [ -f 'cpanfile' ]; then
+  MD5SUM=`md5sum cpanfile`
+  echo MD5SUM
+  #carton install
+fi
