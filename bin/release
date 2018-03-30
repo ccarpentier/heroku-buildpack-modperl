@@ -3,11 +3,12 @@
 # bin/release <build-dir>
 
 # web: python -m SimpleHTTPServer 8080
+# web: sh boot.sh
 
 BUILD_DIR=$1
 
 cat <<EOF
 ---
 default_process_types:
-  web: sh boot.sh
+  web: python -m SimpleHTTPServer 8080
 EOF
