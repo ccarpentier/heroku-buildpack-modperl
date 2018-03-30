@@ -30,7 +30,6 @@ if [ -d $CACHE_DIR/$BUILDPACK/httpd ]; then
   echo "--------> from Cache"
   cp -r $CACHE_DIR/$BUILDPACK/* .
   cp -r $CACHE_DIR/$BUILDPACK/* $TMP_BUILDPACK
-  ls -latr $TMP_BUILDPACK
 else
   echo "--------> from Internet: $APACHE_BUNDLE_URL"
   curl --silent --max-time 60 --location $APACHE_BUNDLE_URL | tar -xz
