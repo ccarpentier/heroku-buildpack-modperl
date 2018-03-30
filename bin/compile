@@ -72,7 +72,15 @@ cd $BUILD_DIR
 PATH=$BUILD_DIR/$BUILDPACK/perl/bin:$PATH
 
 if [ -f 'cpanfile' ]; then
-  MD5SUM=`md5sum cpanfile`
+  MD5SUM=`md5sum cpanfile|awk '{print $1}'`
   echo $MD5SUM
   #carton install
+  echo "-----> Bundling Apache"
+  CARTON_CACHE=$CACHE_DIR/carton
+  if [ -f $CARTON_CACHE/$MD5SUM ]; then
+    echo "--------> from Cache"
+  else
+    echo "--------> from Internet"
+    cp cpanfile $CARTON_CACHE/$MD5SUM
+  fi
 fi
