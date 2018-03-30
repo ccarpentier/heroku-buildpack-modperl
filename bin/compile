@@ -81,6 +81,7 @@ if [ -f 'cpanfile' ]; then
     echo "--------> from Cache"
   else
     echo "--------> from Internet"
+    mkdir -p $CARTON_CACHE
     cp cpanfile $CARTON_CACHE/$MD5SUM
   fi
 fi
