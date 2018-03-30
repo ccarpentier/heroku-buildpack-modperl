@@ -70,7 +70,7 @@ if [ -f 'cpanfile' ]; then
     cp -r $CARTON_CACHE/local/* local
   else
     echo "--------> from Internet"
-    if [ -d $CARTON_CACHE]; then
+    if [ -d $CARTON_CACHE ]; then
       rm -fr $CARTON_CACHE
     fi
     mkdir $CARTON_CACHE
