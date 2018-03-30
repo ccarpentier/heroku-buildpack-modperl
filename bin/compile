@@ -36,20 +36,9 @@ else
   mkdir -p $CACHE_DIR/$BUILDPACK
   cp -r * $CACHE_DIR/$BUILDPACK
   cp -r $CACHE_DIR/$BUILDPACK/* $TMP_BUILDPACK
-  ls -latr $TMP_BUILDPACK
 fi
 
 cd $BUILD_DIR
-
-# cd $BUILD_DIR
-#
-# # move app things to www
-# mkdir -p $CACHE_DIR/www
-# mv * $CACHE_DIR/www
-# if [ -f $CACHE_DIR/www/lib ]; then
-#     mv $CACHE_DIR/www/lib .
-# fi
-# mv $CACHE_DIR/www .
 
 cp *.conf $BUILDPACK/httpd/conf.d
 
@@ -77,8 +66,8 @@ if [ -f 'cpanfile' ]; then
   CARTON_CACHE=$CACHE_DIR/carton
   if [ -f $CARTON_CACHE/$MD5SUM ]; then
     echo "--------> from Cache"
-    mkdir ./local
-    cp -r $CARTON_CACHE/local/* ./local/*
+    mkdir -p local
+    cp -r $CARTON_CACHE/local/* local
   else
     echo "--------> from Internet"
     mkdir -p $CARTON_CACHE
